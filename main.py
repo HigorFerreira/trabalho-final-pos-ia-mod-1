@@ -18,7 +18,11 @@ if __name__ == '__main__':
     args = parse_args()
 
     if args.list:
-        print(coins)
+        print("-"*30)
+        print("Coins:")
+        print("-"*30)
+        for c in coins: print(c)
+        print("-"*30, "\n"*3)
 
     # print(f'Crypto: {args.crypto}')
     # print(f'List: {args.list}')
