@@ -37,7 +37,7 @@ def load(coin: Coin) -> pd.DataFrame:
         dataframe
     """
     try:
-        df = pd.read_csv(coin, skiprows=1)
+        df = pd.read_csv(data_map[coin], skiprows=1)
         return df
     except Exception as err:
         logging.error(str(err))
