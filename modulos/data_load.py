@@ -5,16 +5,16 @@ import os
 from typing import Literal
 
 data_map = {
-    'AAVEBTC': "/".join([ os.getcwd(), "dados", "Poloniex_AAVEBTC_1h" ]),
-    'AAVEUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_AAVEUSDT_1h" ]),
-    'ACMUSDD': "/".join([ os.getcwd(), "dados", "Poloniex_ACMUSDD_1h" ]),
-    'ADAUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_ADAUSDT_1h" ]),
-    'BNBUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_BNBUSDT_1h" ]),
-    'BNTUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_BNTUSDT_1h" ]),
-    'CVTBTC': "/".join([ os.getcwd(), "dados", "Poloniex_CVTBTC_1h" ]),
-    'DOGEBTC': "/".join([ os.getcwd(), "dados", "Poloniex_DOGEBTC_1h" ]),
-    'ETCETH': "/".join([ os.getcwd(), "dados", "Poloniex_ETCETH_1h" ]),
-    'USDPUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_USDPUSDT_1h" ]),
+    'AAVEBTC': "/".join([ os.getcwd(), "dados", "Poloniex_AAVEBTC_1h.csv" ]),
+    'AAVEUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_AAVEUSDT_1h.csv" ]),
+    'ACMUSDD': "/".join([ os.getcwd(), "dados", "Poloniex_ACMUSDD_1h.csv" ]),
+    'ADAUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_ADAUSDT_1h.csv" ]),
+    'BNBUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_BNBUSDT_1h.csv" ]),
+    'BNTUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_BNTUSDT_1h.csv" ]),
+    'CVTBTC': "/".join([ os.getcwd(), "dados", "Poloniex_CVTBTC_1h.csv" ]),
+    'DOGEBTC': "/".join([ os.getcwd(), "dados", "Poloniex_DOGEBTC_1h.csv" ]),
+    'ETCETH': "/".join([ os.getcwd(), "dados", "Poloniex_ETCETH_1h.csv" ]),
+    'USDPUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_USDPUSDT_1h.csv" ]),
 }
 
 Coin = Literal[
