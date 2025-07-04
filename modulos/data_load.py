@@ -30,14 +30,18 @@ Coin = Literal[
     , 'USDPUSDT'
 ]
 
+coins = ( 'AAVEBTC', 'AAVEUSDT', 'ACMUSDD', 'ADAUSDT', 'BNBUSDT', 'BNTUSDT', 'CVTBTC', 'DOGEBTC', 'ETCETH', 'USDPUSDT' )
+
 def load(coin: Coin) -> pd.DataFrame:
     """
-    Carrega os dados da moeda AAVE/BTC e retorna o DataFrame.
+    Carrega os dados de determinada moeda e retorna o DataFrame.
     Returns:
         dataframe
     """
     try:
+        logging.info(f"Reading coin {coin} from path: {data_map[coin]}")
         df = pd.read_csv(data_map[coin], skiprows=1)
         return df
     except Exception as err:
         logging.error(str(err))
+        raise err
