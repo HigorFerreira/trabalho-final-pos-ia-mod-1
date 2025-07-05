@@ -39,6 +39,7 @@ def load(coin: Coin) -> pd.DataFrame:
         dataframe
     """
     try:
+        if not isinstance(coin, str): raise TypeError('Coin must be string')
         logging.info(f"Reading coin {coin} from path: {data_map[coin]}")
         df = pd.read_csv(data_map[coin], skiprows=1)
         df['date'] = pd.to_datetime(df['date'])
