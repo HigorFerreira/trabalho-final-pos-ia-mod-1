@@ -51,4 +51,50 @@ def load(coin: Coin) -> pd.DataFrame:
 
 
 def column_normalizer(df: pd.DataFrame) -> pd.DataFrame:
-    pass
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError("Expected a pandas DataFrame")
+
+    if df.empty:
+        raise ValueError("Invalid empty dataframe")
+
+    normalized = [col.strip().lower().replace(" ", "_") for col in df.columns]
+    df.columns = normalized
+    rename_map = {
+        'volume_aave': 'Volume 1',
+        'volume_btc': 'Volume 2',
+        'volume_usdd': 'Volume 2',
+        'volume_usd': 'Volume 2',
+        'volume': 'Volume 1',
+        'volume_usdp': 'Volume 1',
+        'volume_usdt': 'Volume 2',
+        'volume_etc': 'Volume 1',
+        'volume_eth': 'Volume 2',
+        'volume_doge': 'Volume 1',
+        'volume_cvt': 'Volume 1',
+        'volume_bnt': 'Volume 1',
+        'volume_bnb': 'Volume 1',
+        'volume_ada': 'Volume 1',
+        'volume_acm': 'Volume 1',
+        'symbol': 'symbol',
+        'open': 'open',
+        'high': 'high',
+        'low': 'low',
+        'close': 'close',
+        'weightedaverage': 'weightedAverage',
+        'buytakeramount': 'buyTakerAmount',
+        'buytakerquantity': 'buyTakerQuantity',
+        'tradecount': 'tradeCount',
+        'unix': 'unix',
+        'date': 'date'
+    }
+
+    df = df.rename(columns={k: v for k, v in rename_map.items() if k in df.columns})
+
+    expected = [
+        "unix", "date", "symbol", "open", "high", "low", "close",
+        "Volume 1", "Volume 2", "buyTakerAmount", "buyTakerQuantity",
+        "tradeCount", "weightedAverage"
+    ]
+
+    df = df[[col for col in expected if col in df.columns]]
+    return df
