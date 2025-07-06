@@ -43,7 +43,7 @@ def load(coin: Coin) -> pd.DataFrame:
         logging.info(f"Reading coin {coin} from path: {data_map[coin]}")
         df = pd.read_csv(data_map[coin], skiprows=1)
         df['date'] = pd.to_datetime(df['date'])
-        df = df.sort_values(by='date')
+        df = df.sort_values(by='unix', ascending=True)
         return df
     except Exception as err:
         logging.error(str(err))
