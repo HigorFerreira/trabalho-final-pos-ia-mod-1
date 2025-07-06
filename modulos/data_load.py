@@ -43,6 +43,7 @@ def load(coin: Coin) -> pd.DataFrame:
         logging.info(f"Reading coin {coin} from path: {data_map[coin]}")
         df = pd.read_csv(data_map[coin], skiprows=1)
         df['date'] = pd.to_datetime(df['date'])
+        df = column_normalizer(df)
         df = df.sort_values(by='unix', ascending=True)
         return df
     except Exception as err:
@@ -57,14 +58,14 @@ def column_normalizer(df: pd.DataFrame) -> pd.DataFrame:
     if df.empty:
         raise ValueError("Invalid empty dataframe")
 
-    normalized = [col.strip().lower().replace(" ", "_") for col in df.columns]
-    df.columns = normalized
+    # Normaliza nomes para minúsculo e underscores
+    df.columns = [col.strip().lower().replace(" ", "_") for col in df.columns]
+
     rename_map = {
         'volume_aave': 'Volume 1',
         'volume_btc': 'Volume 2',
         'volume_usdd': 'Volume 2',
         'volume_usd': 'Volume 2',
-        'volume': 'Volume 1',
         'volume_usdp': 'Volume 1',
         'volume_usdt': 'Volume 2',
         'volume_etc': 'Volume 1',
@@ -75,17 +76,10 @@ def column_normalizer(df: pd.DataFrame) -> pd.DataFrame:
         'volume_bnb': 'Volume 1',
         'volume_ada': 'Volume 1',
         'volume_acm': 'Volume 1',
-        'symbol': 'symbol',
-        'open': 'open',
-        'high': 'high',
-        'low': 'low',
-        'close': 'close',
         'weightedaverage': 'weightedAverage',
         'buytakeramount': 'buyTakerAmount',
         'buytakerquantity': 'buyTakerQuantity',
         'tradecount': 'tradeCount',
-        'unix': 'unix',
-        'date': 'date'
     }
 
     df = df.rename(columns={k: v for k, v in rename_map.items() if k in df.columns})
