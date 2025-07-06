@@ -48,3 +48,7 @@ def load(coin: Coin) -> pd.DataFrame:
     except Exception as err:
         logging.error(str(err))
         raise err
+
+
+def column_normalizer(df: pd.DataFrame) -> pd.DataFrame:
+    pass
