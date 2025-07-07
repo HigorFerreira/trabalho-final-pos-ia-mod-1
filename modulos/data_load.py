@@ -57,38 +57,13 @@ def column_normalizer(df: pd.DataFrame) -> pd.DataFrame:
 
     if df.empty:
         raise ValueError("Invalid empty dataframe")
+    
+    def get_transform_fn(arr: list):
+        new_arr = [ "Volume 1" if i == 7  else "Volume 2" if i == 8 else x for i, x in enumerate(arr) ]
+        def transform(extern_arr: list): return { str(extern_arr[i]): x for i, x in enumerate(new_arr) }
+        return transform
+    
+    cols = list(df.columns)
+    transform = get_transform_fn(cols)
 
-    # Normaliza nomes para minúsculo e underscores
-    df.columns = [col.strip().lower().replace(" ", "_") for col in df.columns]
-
-    rename_map = {
-        'volume_aave': 'Volume 1',
-        'volume_btc': 'Volume 2',
-        'volume_usdd': 'Volume 2',
-        'volume_usd': 'Volume 2',
-        'volume_usdp': 'Volume 1',
-        'volume_usdt': 'Volume 2',
-        'volume_etc': 'Volume 1',
-        'volume_eth': 'Volume 2',
-        'volume_doge': 'Volume 1',
-        'volume_cvt': 'Volume 1',
-        'volume_bnt': 'Volume 1',
-        'volume_bnb': 'Volume 1',
-        'volume_ada': 'Volume 1',
-        'volume_acm': 'Volume 1',
-        'weightedaverage': 'weightedAverage',
-        'buytakeramount': 'buyTakerAmount',
-        'buytakerquantity': 'buyTakerQuantity',
-        'tradecount': 'tradeCount',
-    }
-
-    df = df.rename(columns={k: v for k, v in rename_map.items() if k in df.columns})
-
-    expected = [
-        "unix", "date", "symbol", "open", "high", "low", "close",
-        "Volume 1", "Volume 2", "buyTakerAmount", "buyTakerQuantity",
-        "tradeCount", "weightedAverage"
-    ]
-
-    df = df[[col for col in expected if col in df.columns]]
-    return df
+    return df.rename(columns=transform(cols))
