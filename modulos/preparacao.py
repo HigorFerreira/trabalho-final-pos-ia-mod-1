@@ -82,10 +82,10 @@ def preparar_dados(n_splits=5):
 
     return resultados
 
-folds_por_moeda = preparar_dados()
+# folds_por_moeda = preparar_dados()
 
-for coin, folds in folds_por_moeda.items():
-    print(f"\nMoeda: {coin}")
-    for i, fold in enumerate(folds, start=1):
-        print(f"  Fold {i}: Train shape = {fold['train'].shape},  Val shape = {fold['val'].shape}")
+# for coin, folds in folds_por_moeda.items():
+#     print(f"\nMoeda: {coin}")
+#     for i, fold in enumerate(folds, start=1):
+#         print(f"  Fold {i}: Train shape = {fold['train'].shape},  Val shape = {fold['val'].shape}")
 
