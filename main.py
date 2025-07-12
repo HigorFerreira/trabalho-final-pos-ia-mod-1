@@ -18,6 +18,7 @@ def parse_args():
 
     analysys = subparsers.add_parser("analysys", help="Make analyse to each coin")
     analysys.add_argument("--n_splits", type=int, required=False, default=5, help="Set n_splits")
+    analysys.add_argument("--crypto", type=str, required=True, help="Cryptocurrency symbol (e.g., AAVEBTC, DOGEBTC)")
     analysys.set_defaults(func=analyse_coin)
     
     parser.add_argument('--list', nargs='+', help='List: crypto, model')
