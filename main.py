@@ -16,7 +16,7 @@ def parse_args():
     predict.add_argument("--excel", type=str, default=None, required=False, help="Excel file out")
     predict.set_defaults(func=predict_exec)
 
-    analysys = subparsers.add_parser("analysys", description="Make analyse to each coin")
+    analysys = subparsers.add_parser("analysys", help="Make analyse to each coin")
     analysys.add_argument("--n_splits", type=int, required=False, default=5, help="Set n_splits")
     analysys.set_defaults(func=analyse_coin)
     
