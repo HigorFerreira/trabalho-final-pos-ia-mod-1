@@ -14,6 +14,8 @@ def parse_args():
     predict.add_argument("--model", type=str, required=True, help="Model")
     predict.add_argument("--figure", type=str, default="out.png", required=False, help="Figure file out")
     predict.add_argument("--excel", type=str, default=None, required=False, help="Excel file out")
+    predict.add_argument("--svr_kernel", type=str, default='linear', required=False, help="(SVR MODEL) Svr kernel ('linear', 'poly', 'rbf', 'sigmoid', 'precomputed')")
+    predict.add_argument("--svr_degree", type=int, default=1, required=False, help="(SVR MODEL) Svr degree for svr_kernel poly option")
     predict.set_defaults(func=predict_exec)
 
     analysys = subparsers.add_parser("analysys", help="Make analyse to each coin")
