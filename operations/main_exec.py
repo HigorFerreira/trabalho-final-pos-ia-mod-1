@@ -1,4 +1,4 @@
-from modulos.data_load import coins
+from modulos.data_load import coins, models
 
 def main_exec(args):
     if args.list:
@@ -14,5 +14,6 @@ def main_exec(args):
             print("-"*30)
             print("Models:")
             print("-"*30)
-            print("MLP_REGRESSOR")
+            for m in models: print(m)
+            print("-"*30, "\n")
 

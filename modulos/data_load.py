@@ -20,6 +20,10 @@ data_map = {
 }
 
 coins = ( 'AAVEBTC', 'AAVEUSDT', 'ACMUSDD', 'ADAUSDT', 'BNBUSDT', 'BNTUSDT', 'CVTBTC', 'DOGEBTC', 'ETCETH', 'USDPUSDT' )
+models = (
+    'MLP_REGRESSOR',
+    'SVR',
+)
 
 def load(coin: Coin) -> pd.DataFrame:
     """
