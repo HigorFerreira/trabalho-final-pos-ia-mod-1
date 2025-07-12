@@ -2,6 +2,8 @@ import pandas as pd
 import logging
 import os
 
+from .typings import Coin
+
 from typing import Literal
 
 data_map = {
@@ -16,19 +18,6 @@ data_map = {
     'ETCETH': "/".join([ os.getcwd(), "dados", "Poloniex_ETCETH_1h.csv" ]),
     'USDPUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_USDPUSDT_1h.csv" ]),
 }
-
-Coin = Literal[
-    'AAVEBTC'
-    , 'AAVEUSDT'
-    , 'ACMUSDD'
-    , 'ADAUSDT'
-    , 'BNBUSDT'
-    , 'BNTUSDT'
-    , 'CVTBTC'
-    , 'DOGEBTC'
-    , 'ETCETH'
-    , 'USDPUSDT'
-]
 
 coins = ( 'AAVEBTC', 'AAVEUSDT', 'ACMUSDD', 'ADAUSDT', 'BNBUSDT', 'BNTUSDT', 'CVTBTC', 'DOGEBTC', 'ETCETH', 'USDPUSDT' )
 
