@@ -49,22 +49,22 @@ class BaseNamespace(Namespace):
 
 class MLPNamespace(BaseNamespace): pass
 
-class SVCNamespace(BaseNamespace):
-    svc_kernel: SvcKernel
-    svc_degree: int
+class SVRNamespace(BaseNamespace):
+    svr_kernel: SvcKernel
+    svr_degree: int
     def __init__(
         self,
-        svc_kernel: SvcKernel = 'linear',
-        svc_degree: int = 1,
+        svr_kernel: SvcKernel = 'linear',
+        svr_degree: int = 1,
         **kwargs
     ):
         super().__init__(**{
-            'svc_kernel': svc_kernel,
-            'svc_degree': svc_degree,
+            'svr_kernel': svr_kernel,
+            'svr_degree': svr_degree,
             **kwargs
         })
 
 class PredictNamespace(
     MLPNamespace,
-    SVCNamespace,
+    SVRNamespace,
 ): pass
