@@ -16,8 +16,8 @@ def svr(args: SVRNamespace):
     df = column_normalizer(df)
     
     logging.warning(f"Features {features} are normalized using StandardScaler().fit_transform")
-    X = StandardScaler().fit_transform(df[features])
-    y = df['close']
+    X = StandardScaler().fit_transform(df[features].iloc[0:int(len(df)*args.amount)])
+    y = df['close'].iloc[0:int(len(df)*args.amount)]
 
     logging.info(f"Trainning SVR...")
     regr = svm.SVR(kernel=args.svr_kernel, degree=args.svr_degree)
@@ -29,7 +29,7 @@ def svr(args: SVRNamespace):
     columns.append('close')
     df = df[columns]
 
-    df['PREDICTED'] = regr.predict(X)
+    df['PREDICTED'] = regr.predict(StandardScaler().fit_transform(df[features]))
     logging.info(f"Predicted values assigned to dataframe")
 
     error = df[[ 'close', 'PREDICTED' ]].apply(lambda row: abs(row['close'] - row['PREDICTED']), axis=1)
