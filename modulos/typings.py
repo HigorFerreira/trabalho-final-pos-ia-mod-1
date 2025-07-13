@@ -66,7 +66,18 @@ class MLPNamespace(BaseNamespace):
             mlp_random_state: int = 1,
             **kwargs
     ):
-        super().__init__(crypto, model, amount, figure, excel, **kwargs)
+        super().__init__(**{
+            'crypto': crypto,
+            'model': model,
+            'amount': amount,
+            'figure': figure,
+            'excel': excel,
+            'mlp_hidden_layer_sizes': mlp_hidden_layer_sizes,
+            'mlp_activation': mlp_activation,
+            'mlp_max_iter': mlp_max_iter,
+            'mlp_random_state': mlp_random_state,
+            **kwargs,
+        })
 
 class SVRNamespace(BaseNamespace):
     svr_kernel: SvcKernel
