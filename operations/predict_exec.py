@@ -1,5 +1,6 @@
 from .predict.mlp import mlp
 from .predict.svr import svr
+from .predict.knr import knr
 from modulos.typings import PredictNamespace
 
 
@@ -9,3 +10,5 @@ def predict_exec(args: PredictNamespace):
             return mlp(args)
         case 'SVR':
             return svr(args)
+        case 'KNRegressor':
+            return knr(args)

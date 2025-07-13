@@ -23,6 +23,7 @@ coins = ( 'AAVEBTC', 'AAVEUSDT', 'ACMUSDD', 'ADAUSDT', 'BNBUSDT', 'BNTUSDT', 'CV
 models = (
     'MLP_REGRESSOR',
     'SVR',
+    'KNRegressor',
 )
 
 def load(coin: Coin) -> pd.DataFrame:
