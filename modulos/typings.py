@@ -52,7 +52,21 @@ class BaseNamespace(Namespace):
 
 
 
-class MLPNamespace(BaseNamespace): pass
+class MLPNamespace(BaseNamespace):
+    mlp_hidden_layer_sizes: list[int]
+    mlp_activation: Literal['relu', 'identity', 'logistic', 'tanh']
+    mlp_max_iter: int
+    mlp_random_state: int
+
+    def __init__(
+            self, crypto, model, amount = 0.7, figure = 'out.png', excel = None,
+            mlp_hidden_layer_sizes: list[int] = [50, 100, 50],
+            mlp_activation: Literal['relu', 'identity', 'logistic', 'tanh'] = 'relu',
+            mlp_max_iter: int = 800,
+            mlp_random_state: int = 1,
+            **kwargs
+    ):
+        super().__init__(crypto, model, amount, figure, excel, **kwargs)
 
 class SVRNamespace(BaseNamespace):
     svr_kernel: SvcKernel

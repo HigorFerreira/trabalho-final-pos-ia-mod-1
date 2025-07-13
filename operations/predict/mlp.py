@@ -29,7 +29,8 @@ def mlp(args: MLPNamespace):
     X_scaled = scaler.fit_transform(X)
     X_scaled
 
-    regg = MLPRegressor(hidden_layer_sizes=(50,100,50), activation='relu', max_iter=800, random_state=1)
+    args.mlp_hidden_layer_sizes = list(map(lambda x: int(x), args.mlp_hidden_layer_sizes))
+    regg = MLPRegressor(hidden_layer_sizes=args.mlp_hidden_layer_sizes, activation=args.mlp_activation, max_iter=args.mlp_max_iter, random_state=args.mlp_random_state)
     regg.fit(X_scaled, y)
 
     if len(set(regg.predict(StandardScaler().fit_transform(df[features])))) < 0.8*len(df):
