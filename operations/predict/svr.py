@@ -42,9 +42,7 @@ def svr(args: SVRNamespace):
     plt.figure(figsize=(14, 6))
     plt.plot(df['date'], df['PREDICTED'], label='Predição')
     plt.plot(df['date'], df['close'], label='Valor real')
-    plt.title(f"Modelo {args.model} aplicado em: {args.crypto} (kernel {args.svr_kernel}{
-        f', degree {args.svr_degree}' if args.svr_kernel == 'poly' else ''
-    })")
+    plt.title(f"Modelo {args.model} aplicado em: {args.crypto} (kernel {args.svr_kernel}{ f', degree {args.svr_degree}' if args.svr_kernel == 'poly' else '' })")
     plt.legend()
     plt.savefig(args.figure)
     logging.info(f"Figure wrote successfully")
