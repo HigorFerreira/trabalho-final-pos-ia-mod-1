@@ -19,10 +19,10 @@ def mlp(args: MLPNamespace):
     df = load(crypto)
     df = column_normalizer(df)
 
-    predictors = [ 'unix', 'Volume 1', 'Volume 2', 'tradeCount', 'weightedAverage' ]
+    features = [ 'unix' ]
     outcome = 'close'
 
-    X = df[predictors].iloc[0:int(len(df)*args.amount)]
+    X = df[features].iloc[0:int(len(df)*args.amount)]
     y = df[outcome].iloc[0:int(len(df)*args.amount)]
 
     scaler = StandardScaler()
@@ -32,11 +32,11 @@ def mlp(args: MLPNamespace):
     regg = MLPRegressor(hidden_layer_sizes=(50,100,50), activation='relu', max_iter=800, random_state=1)
     regg.fit(X_scaled, y)
 
-    if len(set(regg.predict(StandardScaler().fit_transform(df[predictors])))) < 0.8*len(df):
+    if len(set(regg.predict(StandardScaler().fit_transform(df[features])))) < 0.8*len(df):
         logging.warning(f"Less predicted entries")
 
     dff = df
-    dff['PREDICTED'] = regg.predict(StandardScaler().fit_transform(df[predictors]))
+    dff['PREDICTED'] = regg.predict(StandardScaler().fit_transform(df[features]))
     dff = dff[[ 'symbol', 'date', 'close', 'PREDICTED' ]].rename(columns={ 'close': 'FECHAMENTO REAL' })
     dff['ERRO'] = dff[['FECHAMENTO REAL', 'PREDICTED']].apply(lambda row: abs(row['FECHAMENTO REAL'] - row['PREDICTED']), axis=1)
     if excel is not None:
