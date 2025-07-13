@@ -2,16 +2,16 @@ from typing import Literal
 from argparse import Namespace
 
 Coin = Literal[
-    'AAVEBTC'
-    , 'AAVEUSDT'
-    , 'ACMUSDD'
-    , 'ADAUSDT'
-    , 'BNBUSDT'
-    , 'BNTUSDT'
-    , 'CVTBTC'
-    , 'DOGEBTC'
-    , 'ETCETH'
-    , 'USDPUSDT'
+    'AAVEUSDT'
+    ,'ADAUSDT'
+    ,'ALPACAUSDT'
+    ,'APEUSDT'
+    ,'ATLASUSDT'
+    ,'BTCUSDT'
+    ,'DOGEUSDT'
+    ,'ETHUSDT'
+    ,'XRPBULLUSDT'
+    ,'YFIUSDT'
 ]
 
 Model = Literal[
