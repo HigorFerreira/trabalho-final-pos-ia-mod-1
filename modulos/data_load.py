@@ -24,6 +24,7 @@ models = (
     'MLP_REGRESSOR',
     'SVR',
     'KNRegressor',
+    'LINEAR',
 )
 
 def load(coin: Coin) -> pd.DataFrame:

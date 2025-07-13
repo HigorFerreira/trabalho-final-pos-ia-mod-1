@@ -21,9 +21,9 @@ def parse_args():
     predict.add_argument("--mlp_random_state", type=int, default=1, help='Default 1')
     predict.add_argument("--svr_kernel", type=str, default='linear', required=False, help="(SVR MODEL) Svr kernel ('linear', 'poly', 'rbf', 'sigmoid', 'precomputed')")
     predict.add_argument("--svr_degree", type=int, default=1, required=False, help="(SVR MODEL) Svr degree for svr_kernel poly option")
-    predict.set_defaults(func=predict_exec)
     predict.add_argument("--kn_neighbors", type=int, default=5, required=False, help="(KNR MODEL) Number of k neightbors. Default 5")
     predict.add_argument("--kn_weights", type=str, default='distance', required=False, help="(KNR MODEL) Weight (uniform or distance). Default distance")
+    predict.set_defaults(func=predict_exec)
 
     analysys = subparsers.add_parser("analysys", help="Make analyse to each coin")
     analysys.add_argument("--n_splits", type=int, required=False, default=5, help="Set n_splits")

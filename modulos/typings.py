@@ -18,6 +18,7 @@ Model = Literal[
     'MLP_REGRESSOR',
     'SVR',
     'KNRegressor',
+    'LINEAR',
 ]
 
 SvcKernel = Literal['linear', 'poly', 'rbf', 'sigmoid', 'precomputed']
