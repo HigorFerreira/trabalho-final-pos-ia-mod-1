@@ -49,9 +49,7 @@ def svr(args: SVRNamespace):
 
     if args.excel is not None:
         logging.info(f"Writing {args.excel} excel...")
-        df.to_excel(args.excel, sheet_name=f"Modelo {args.model} aplicado em {args.crypto} (kernel {args.svr_kernel}{
-            f', degree {args.svr_degree}' if args.svr_kernel == 'poly' else ''
-        })")
+        df.to_excel(args.excel, sheet_name=f"Modelo {args.model} aplicado em {args.crypto} (kernel {args.svr_kernel}{f', degree {args.svr_degree}' if args.svr_kernel == 'poly' else ''})")
         logging.info(f"Excel wrote successfully")
 
     
