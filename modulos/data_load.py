@@ -7,19 +7,19 @@ from .typings import Coin
 from typing import Literal
 
 data_map = {
-    'AAVEBTC': "/".join([ os.getcwd(), "dados", "Poloniex_AAVEBTC_1h.csv" ]),
-    'AAVEUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_AAVEUSDT_1h.csv" ]),
-    'ACMUSDD': "/".join([ os.getcwd(), "dados", "Poloniex_ACMUSDD_1h.csv" ]),
-    'ADAUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_ADAUSDT_1h.csv" ]),
-    'BNBUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_BNBUSDT_1h.csv" ]),
-    'BNTUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_BNTUSDT_1h.csv" ]),
-    'CVTBTC': "/".join([ os.getcwd(), "dados", "Poloniex_CVTBTC_1h.csv" ]),
-    'DOGEBTC': "/".join([ os.getcwd(), "dados", "Poloniex_DOGEBTC_1h.csv" ]),
-    'ETCETH': "/".join([ os.getcwd(), "dados", "Poloniex_ETCETH_1h.csv" ]),
-    'USDPUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_USDPUSDT_1h.csv" ]),
+    'AAVEUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_AAVEUSDT_d.csv" ]),
+    'ADAUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_ADAUSDT_d.csv" ]),
+    'ALPACAUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_ALPACAUSDT_d.csv" ]),
+    'APEUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_APEUSDT_d.csv" ]),
+    'ATLASUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_ATLASUSDT_d.csv" ]),
+    'BTCUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_BTCUSDT_d.csv" ]),
+    'DOGEUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_DOGEUSDT_d.csv" ]),
+    'ETHUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_ETHUSDT_d.csv" ]),
+    'XRPBULLUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_XRPBULLUSDT_d.csv" ]),
+    'YFIUSDT': "/".join([ os.getcwd(), "dados", "Poloniex_YFIUSDT_d.csv" ]),
 }
 
-coins = ( 'AAVEBTC', 'AAVEUSDT', 'ACMUSDD', 'ADAUSDT', 'BNBUSDT', 'BNTUSDT', 'CVTBTC', 'DOGEBTC', 'ETCETH', 'USDPUSDT' )
+coins = ('AAVEUSDT', 'ADAUSDT', 'ALPACAUSDT', 'APEUSDT', 'ATLASUSDT', 'BTCUSDT', 'DOGEUSDT', 'ETHUSDT', 'XRPBULLUSDT', 'YFIUSDT')
 models = (
     'MLP_REGRESSOR',
     'SVR',
