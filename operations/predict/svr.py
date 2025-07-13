@@ -12,6 +12,8 @@ def svr(args: SVRNamespace):
     features = ['unix', 'weightedAverage']
 
     logging.info(f"Running {args.model} on {args.crypto} crypto for features {features}")
+    logging.warning(f"SVR kernel: {args.svr_kernel}")
+    logging.warning(f"SVR degree: {args.svr_degree}")
     df = load(args.crypto)
     df = column_normalizer(df)
     
