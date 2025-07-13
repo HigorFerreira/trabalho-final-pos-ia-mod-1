@@ -98,6 +98,23 @@ class KNRegressorNamespace(BaseNamespace):
             **kwargs
         })
 
+class LinearRegressorNamespace(BaseNamespace):
+    fit_intercept: bool = True
+    normalize: bool = False  # deprecated no sklearn atual, mas mantido por compatibilidade
+
+    def __init__(
+        self,
+        fit_intercept: bool = True,
+        normalize: bool = False,
+        **kwargs
+        ):
+        super().__init__(**{
+            'fit_intercept': fit_intercept,
+            'normalize': normalize,
+            **kwargs
+        })
+
+
 class PredictNamespace(
     MLPNamespace,
     SVRNamespace,
