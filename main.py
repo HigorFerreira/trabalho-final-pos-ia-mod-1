@@ -12,6 +12,7 @@ def parse_args():
     predict = subparsers.add_parser("predict", help="Use a model do predict a coin")
     predict.add_argument("--crypto", type=str, required=True, help="Cryptocurrency symbol (e.g., AAVEBTC, DOGEBTC)")
     predict.add_argument("--model", type=str, required=True, help="Model")
+    predict.add_argument("--amount", type=float, required=False, help="The percentage of data to use for training. Represented as a number between 0 and 1, with a default value of 0.7")
     predict.add_argument("--figure", type=str, default="out.png", required=False, help="Figure file out")
     predict.add_argument("--excel", type=str, default=None, required=False, help="Excel file out")
     predict.add_argument("--svr_kernel", type=str, default='linear', required=False, help="(SVR MODEL) Svr kernel ('linear', 'poly', 'rbf', 'sigmoid', 'precomputed')")
