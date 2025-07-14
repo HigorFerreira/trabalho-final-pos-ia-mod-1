@@ -13,7 +13,7 @@ def parse_args():
     predict = subparsers.add_parser("predict", help="Use a model do predict a coin")
     predict.add_argument("--crypto", type=str, required=True, help="Cryptocurrency symbol (e.g., AAVEBTC, DOGEBTC)")
     predict.add_argument("--model", type=str, required=True, help="Model")
-    predict.add_argument("--amount", type=float, required=False, help="The percentage of data to use for training. Represented as a number between 0 and 1, with a default value of 0.7")
+    predict.add_argument("--amount", type=float, required=False, default=0.7, help="The percentage of data to use for training. Represented as a number between 0 and 1, with a default value of 0.7")
     predict.add_argument("--figure", type=str, default="out.png", required=False, help="Figure file out")
     predict.add_argument("--excel", type=str, default=None, required=False, help="Excel file out")
     predict.add_argument("--mlp_hidden_layer_sizes", nargs='+', default=[50, 100, 50], help='(MLP MODEL) Hidden layer neurons. Default 50 100 50')
