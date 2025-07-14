@@ -15,3 +15,5 @@ def predict_exec(args: PredictNamespace):
             return knr(args)
         case 'LINEAR':
             return linear(args)
+        case _:
+            print(f"Model {args.model} doesn't exist.")
