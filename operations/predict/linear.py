@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 
 def linear(args: LinearRegressorNamespace):
-    print('ESTOU NO LINEAR')
+    logging.info(f"Running {args.model} on {args.crypto} crypto")
     crypto: str = args.crypto
     model: str = args.model
     figure: str = args.figure
@@ -40,12 +40,10 @@ def linear(args: LinearRegressorNamespace):
     dff = dff[['symbol', 'date', 'close', 'PREDICTED']].rename(columns={'close': 'FECHAMENTO REAL'})
     dff['ERRO'] = dff[['FECHAMENTO REAL', 'PREDICTED']].apply(lambda row: abs(row['FECHAMENTO REAL'] - row['PREDICTED']), axis=1)
 
-    if excel is not None:
-        dff.to_excel(excel)
-
     logging.info(f"Max error: {dff[dff['ERRO'] == dff['ERRO'].max()]}")
     logging.info(f"Min error: {dff[dff['ERRO'] == dff['ERRO'].min()]}")
 
+    logging.info(f"Writing {args.figure} figure...")
     plt.figure(figsize=(14, 6))
     plt.title(crypto)
     plt.plot(dff['date'], dff['PREDICTED'], label='Predição')
@@ -53,3 +51,6 @@ def linear(args: LinearRegressorNamespace):
     plt.ylim(dff['FECHAMENTO REAL'].min() - 0.005, dff['FECHAMENTO REAL'].max() + 0.005)
     plt.legend()
     plt.savefig(figure)
+
+    if args.excel is not None:
+        df.to_excel(args.excel, sheet_name=f"Modelo {args.model} aplicado em {args.crypto}")
