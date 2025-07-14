@@ -2,7 +2,8 @@ import argparse
 from operations import (
     main_exec,
     predict_exec,
-    analyse_coin
+    analyse_coin,
+    merge_exec
 )
 
 def parse_args():
@@ -24,6 +25,15 @@ def parse_args():
     predict.add_argument("--kn_neighbors", type=int, default=5, required=False, help="(KNR MODEL) Number of k neightbors. Default 5")
     predict.add_argument("--kn_weights", type=str, default='distance', required=False, help="(KNR MODEL) Weight (uniform or distance). Default distance")
     predict.set_defaults(func=predict_exec)
+
+    merge = subparsers.add_parser("merge", help="Merge two datasets do compare")
+    merge.add_argument("--datasets", nargs='+', required=True, help="Dataset paths: dataset1 dataset2")
+    merge.add_argument("--prefixes", nargs='+', default=[ 'dt1', 'dt2' ], required=False, help="Column prefixers. Defaul: dt1 dt2")
+    merge.add_argument("--last_columns", nargs='+', default=[], required=False, help="Last columns of the final dataset")
+    merge.add_argument("--excel", type=str, default='out.xlsx', required=False, help="Excel file output. Default out.xlsx")
+    merge.add_argument("--remove_from_dataset_1", nargs='+', default=[], required=False, help="Remove columns from dataset 1")
+    merge.add_argument("--remove_from_dataset_2", nargs='+', default=[], required=False, help="Remove columns from dataset 2")
+    merge.set_defaults(func=merge_exec)
 
     analysys = subparsers.add_parser("analysys", help="Make analyse to each coin")
     analysys.add_argument("--n_splits", type=int, required=False, default=5, help="Set n_splits")

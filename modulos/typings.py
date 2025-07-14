@@ -131,3 +131,40 @@ class PredictNamespace(
     MLPNamespace,
     SVRNamespace,
 ): pass
+
+class MergeNamespace(Namespace):
+    datasets: list[str]
+    prefixes: list[str]
+    last_comlumns: list[str]
+    excel: str
+    remove_from_dataset_1: list[str]
+    remove_from_dataset_2: list[str]
+
+    def validate(self):
+        dt1, dt2 = self.datasets
+        pr1, pr2 = self.prefixes
+
+        if not dt1 or not isinstance(dt1, str): raise ValueError("There's not dataframe 1")
+        if not dt2 or not isinstance(dt2, str): raise ValueError("There's not dataframe 2")
+        if not pr1 or not isinstance(pr1, str): raise ValueError("There's not prefixer 1")
+        if not pr2 or not isinstance(pr2, str): raise ValueError("There's not prefixer 2")
+
+    def __init__(
+        self,
+        datasets: list[str],
+        prefixes: list[str] = [ 'dt1', 'dt2' ],
+        last_columns: list[str] = [],
+        excel: str = 'out.xlsx',
+        remove_from_dataset_1: list[str] = [],
+        remove_from_dataset_2: list[str] = [],
+        **kwargs
+    ):
+        super().__init__(**{
+            'datasets': datasets,
+            'prefixes': prefixes,
+            'last_columns': last_columns,
+            'excel': excel,
+            'remove_from_dataset_1': remove_from_dataset_1,
+            'remove_from_dataset_2': remove_from_dataset_2,
+            **kwargs,
+        })
